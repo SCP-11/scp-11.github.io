@@ -2957,7 +2957,7 @@ input, select, textarea {
 			}
 
 				.gallery a.landscape img {
-					height: 30vw;
+					height: 20vw;
 				}
 
 			.gallery a.portrait img {
@@ -3879,4 +3879,55 @@ input, select, textarea {
 			padding: 4rem;
 		}
 
+	}
+
+	/* MY OWN */
+	/* Hide the dropdown content by default */
+	.dropdown-content {
+		display: none;
+	}
+
+	/* Style the button */
+	.dropdown-btn {
+		position: relative;
+		display: block;
+	}
+
+	/* Style the content when it's visible */
+	.dropdown-content.active {
+		position: relative; /* Use relative positioning on the button */
+		top: 40px; /* Adjust the top value to move it down */
+	
+		display: flex; /* Use Flexbox to arrange elements */
+		flex-direction: row; /* Adjust the direction as needed */
+	}
+
+	.dropbtn {
+		
+		position: flex;
+		display: block;
+		/* background-color: #3498db;
+		color: white;
+		padding: 10px;
+		border: none; */
+		cursor: pointer;
+		width: 200px;
+		height: 50px;
+	}
+	
+	/* Style the dropdown content (hidden by default) */
+	.dropdown-content {
+		display: none;
+		padding: 10px;
+	}
+	
+	/* Style the dropdown container */
+	.dropdown {
+		position: relative;
+		margin: 10px;
+	}
+	
+	/* Show the dropdown content when the dropdown button is clicked */
+	.show {
+		display: block;
 	}
