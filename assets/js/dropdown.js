@@ -19,6 +19,7 @@ dropdowns.forEach((dropdown) => {
 
     button.addEventListener("click", () => {
         // Toggle the "show" class to display or hide the content
+        
         content.classList.toggle("show");
     });
 });
