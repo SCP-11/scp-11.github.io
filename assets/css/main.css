@@ -3966,6 +3966,7 @@ body.is-ie #wrapper > section > .content > section {
   display: none;
 }
 
+
 /* Style the dropdown container */
 .dropdown {
   all: inherit;
@@ -3975,9 +3976,24 @@ body.is-ie #wrapper > section > .content > section {
 /* Show the dropdown content when the dropdown button is clicked */
 .show {
   all: inherit;
-  box-sizing: inherit;
-  display: inherit;
+  border-bottom: 0;
+  display: block;
+  margin: 0 0 0 0;
+  outline: 0;
   position: relative;
+  /* width: calc(50% - 1.25rem); */
+  /* all: inherit;
+  box-sizing: inherit;
+  display: inherit; */
+  /* position: relative; */
   /* left: 20px */
-  
 }
+
+/* .show img {
+  display: block;
+  height: 25vw;
+  min-height: 10rem;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+} */
