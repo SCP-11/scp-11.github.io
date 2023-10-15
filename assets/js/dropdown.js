@@ -17,11 +17,11 @@ dropdowns.forEach((dropdown) => {
     const button = dropdown.querySelector(".dropbtn");
     const content = dropdown.querySelector(".dropdown-content");
 
-    button.addEventListener("click", () => {
-        // Toggle the "show" class to display or hide the content
+    // button.addEventListener("click", () => {
+    //     // Toggle the "show" class to display or hide the content
         
-        content.classList.toggle("show");
-    });
+    //     content.classList.toggle("show");
+    // });
 });
 
 // Close the dropdown when clicking outside of it
