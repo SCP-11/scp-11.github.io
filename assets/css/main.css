@@ -3580,7 +3580,9 @@ ul.feature-icons li:nth-child(2) {
   #wrapper > section > .content > section > header {
     width: 30rem;
   }
-
+  #wrapper > section > .content > section > .content {
+    height: 100%;
+  }
   #wrapper > section.intro > header > * {
     width: 21rem;
   }
