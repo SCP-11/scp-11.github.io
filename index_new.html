@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takatoshi Soeda - Game Developer Portfolio</title>
+    <meta name="description" content="Takatoshi Soeda's Game Development Portfolio - Unity, VR, AI, and Interactive Design">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .nav-tabs {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            background: none;
+            border: none;
+            padding: 20px 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: #f8f9fa;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 0;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            padding: 25px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-header p {
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .project-media {
+            position: relative;
+            width: 100%;
+            background: #000;
+        }
+
+        .project-media iframe, .project-media video {
+            width: 100%;
+            height: 300px;
+            border: none;
+            display: block;
+        }
+
+        .project-media img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .project-media img:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        /* Demo Video Section */
+        .demo-section {
+            text-align: center;
+            padding: 40px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .demo-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .demo-video {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .demo-video video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-tabs {
+                justify-content: center;
+            }
+
+            .nav-tab {
+                padding: 15px 15px;
+                font-size: 0.9rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Takatoshi Soeda</h1>
+            <p>Game Developer & Interactive Designer</p>
+            <p>Specializing in Unity, VR, AI, and Immersive Experiences</p>
+        </div>
+    </header>
+
+    <!-- Demo Video Section -->
+    <section class="demo-section">
+        <div class="container">
+            <h2>Portfolio Showcase</h2>
+            <div class="demo-video">
+                <video controls>
+                    <source src="./videos/GameVideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-tabs">
+                <li><button class="nav-tab active" data-tab="academic">Academic</button></li>
+                <li><button class="nav-tab" data-tab="personal">Personal</button></li>
+                <li><button class="nav-tab" data-tab="club">Club</button></li>
+                <li><button class="nav-tab" data-tab="robotics">Robotics</button></li>
+                <li><button class="nav-tab" data-tab="ai">AI</button></li>
+                <li><button class="nav-tab" data-tab="games">Games</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="content">
+        <div class="container">
+            
+            <!-- Academic Projects -->
+            <div id="academic" class="tab-content active">
+                <h2 class="section-title">Academic Projects</h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Game Engine Development</h3>
+                            <p>Implemented camera culling feature and physics component that manages collision between objects.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/7JefnI0f5Ns?si=ewfXl_eT29PONkaq" 
+                                title="Game Engine Demo" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Space Chess Game Design</h3>
+                            <p>Created a unique chess game set in space, integrating video game mechanics such as asteroids, special attacks, and dynamic movement options.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/h6eDBY4BFXA?si=pzAOj4ddo3qDZ0wd" 
+                                title="Space Chess Game" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Computer Graphics</h3>
+                            <p>Developed foundation in web programming and 2D/3D graphics, learning coordinate systems, transformations, hierarchical modeling, lighting, and texturing.</p>
+                        </div>
+                        <div class="project-media">
+                            <a href="https://scp-11.github.io/Computer-Graphics-599/P2-SCP-11/for_students/gr-01-01.html" target="_blank">
+                                <img src="images/cs599/P2.png" alt="Computer Graphics Project">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>VR Workspace</h3>
+                            <p>Explored working and tasking in virtual environments and how it can be more efficient than traditional 2D screens.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/Xhhh-HpClW0?si=A-mDwIBFl7OIm2jF" 
+                                title="VR Workspace Demo" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>3D Digital Studio</h3>
+                            <p>Expanded 3D modeling skills using Autodesk Maya, learning unique systems and techniques for professional 3D modeling.</p>
+                        </div>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="images/art429/mugBottleLeaf_Takatoshi.jpg" alt="3D Rendered Scene">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/art429/Shovel2_Takatoshi.jpg" alt="3D Shovel Model">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/art429/mech.jpg" alt="Mechanical Robot Model">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Digital Forms</h3>
+                            <p>Used Photoshop to remix multiple photos based on themes and created 3D models focused on mecha and robot designs.</p>
+                        </div>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="images/gallery/portfolio/SoedaTakatoshi_RealityUnreality.jpg" alt="Reality Unreality Art">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/gallery/portfolio/SoedaTakatoshi_Collage_1.jpg" alt="Digital Collage">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Geometric Modeling</h3>
+                            <p>Advanced 3D modeling for design and manufacturing, focusing on precision and technical accuracy.</p>
+                        </div>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="images/me231/Tank_page-Final.jpg" alt="Tank Design">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/me231/ps5.jpg" alt="PS5 Controller Model">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/me231/ps5Many.jpg" alt="PS5 Controller Variations">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Personal Projects -->
+            <div id="personal" class="tab-content">
+                <h2 class="section-title">Personal Projects</h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Ball Balancing Robot</h3>
+                            <p>Unity simulation of a ball balancing robot using PID control. The robot keeps the ball centered on a platform using Unity's joint functions for stability and precision.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/bJMv3oY-dB8?si=0avdyuY6dOirK7Y-" 
+                                title="Ball Balancing Robot" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Space Movement Simulation</h3>
+                            <p>Inspired by War Thunder and Gundam, created a realistic space warfare game with immersive combat experience and smooth 3D spacecraft controls.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/CGKFLy39-X0?si=gkhURo3ANoRecM-V" 
+                                title="Space Movement Demo" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Conversational AI Integration</h3>
+                            <p>Integrated conversational AI into game development, creating an immersive escape room where players engage with AI characters through natural language.</p>
+                        </div>
+                        <div class="project-media">
+                            <video controls>
+                                <source src="videos/Convai.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Club Projects -->
+            <div id="club" class="tab-content">
+                <h2 class="section-title">Club Projects</h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Library of Meialia</h3>
+                            <p>A 2D Rogue-like Pixel-art RPG developed by Minerva Game Studio. Responsible for character movement, design, and animation.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/hpdU34ydxck?si=heik70aouC_LpGVD" 
+                                title="Library of Meialia Demo" allowfullscreen></iframe>
+                        </div>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="images/LOM/LOM.png" alt="Library of Meialia Screenshot">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/LOM/Amlos.png" alt="Amlos Character Design">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Robotics -->
+            <div id="robotics" class="tab-content">
+                <h2 class="section-title">Robotics Projects</h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Ball Balancing Robot Simulation</h3>
+                            <p>Advanced robotics simulation in Unity implementing PID control systems for real-time ball balancing with precise platform movement control.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/bJMv3oY-dB8?si=0avdyuY6dOirK7Y-" 
+                                title="Ball Balancing Robot" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- AI Projects -->
+            <div id="ai" class="tab-content">
+                <h2 class="section-title">AI Projects</h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Research Game AI</h3>
+                            <p>Advanced AI techniques in game development, focusing on intelligent and adaptive NPC behaviors to enhance gameplay experience.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/ByitSvdkMvc?si=JOs2f83ymgZvrdNT" 
+                                title="Research Game AI" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Conversational AI in Games</h3>
+                            <p>Integration of natural language processing in game environments, creating AI characters that can engage in meaningful conversations and assist in puzzle-solving.</p>
+                        </div>
+                        <div class="project-media">
+                            <video controls>
+                                <source src="videos/Convai.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Game Design -->
+            <div id="games" class="tab-content">
+                <h2 class="section-title">Game Design Projects</h2>
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Space Chess Innovation</h3>
+                            <p>Revolutionary chess game set in space with video game mechanics including asteroids, special attacks, and dynamic movement systems.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/h6eDBY4BFXA?si=pzAOj4ddo3qDZ0wd" 
+                                title="Space Chess Game" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Space Combat Simulation</h3>
+                            <p>Realistic space warfare game inspired by War Thunder and Gundam, featuring immersive 3D movement and combat mechanics.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe src="https://www.youtube.com/embed/CGKFLy39-X0?si=gkhURo3ANoRecM-V" 
+                                title="Space Movement Demo" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Interactive AI Gaming</h3>
+                            <p>Escape room experience with conversational AI characters, combining environmental puzzles with natural language interaction.</p>
+                        </div>
+                        <div class="project-media">
+                            <video controls>
+                                <source src="videos/Convai.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Takatoshi Soeda. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+/* Website Improvements CSS */
+
+/* Performance optimizations */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix iframe responsiveness and height issues */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: #000;
+    margin: 1rem 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Ensure sections have proper minimum height */
+.dropdown .content {
+    min-height: 300px;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Improved hover effects for project sections */
+.dropdown {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.dropdown:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Better gallery grid layout */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.gallery img {
+    border-radius: 8px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    will-change: transform;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Improve table of contents styling */
+.intro + section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.intro + section ul li {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #007acc;
+    transition: all 0.3s ease;
+    will-change: transform, background;
+}
+
+.intro + section ul li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+}
+
+.intro + section ul li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Loading animation for videos - simplified and hidden by default */
+.video-container::before {
+    content: "";
+    display: none;
+}
+
+/* Better mobile navigation */
+@media screen and (max-width: 736px) {
+    .intro + section ul li {
+        margin: 0.5rem 0;
+        padding: 0.8rem;
+    }
+    
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .dropdown .content {
+        min-height: 250px;
+    }
+    
+    .video-container {
+        margin: 1rem 0;
+    }
+}
+
+/* Dark mode friendly adjustments */
+@media (prefers-color-scheme: dark) {
+    .video-container {
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    }
+    
+    .dropdown:hover {
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Add subtle animations - DISABLED TO FIX VISIBILITY ISSUES */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Removed problematic dropdown animations that were hiding content */
+
+/* Better spacing for content sections */
+#wrapper > section {
+    margin-bottom: 3rem;
+}
+
+/* Improve readability */
+p {
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+/* Style improvements for headers */
+h2 {
+    border-bottom: 2px solid #007acc;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #007acc, #00c6ff);
+    transition: width 0.3s ease;
+}
+
+h2:hover::after {
+    width: 100%;
+}
+
+h3 {
+    color: #007acc;
+    margin-bottom: 1rem;
+}
+
+/* Better button styles */
+.actions a {
+    transition: all 0.3s ease;
+    will-change: transform;
+}
+
+.actions a:hover {
+    transform: scale(1.1);
+}
+
+/* Accessibility improvements */
+.video-container:focus-within {
+    outline: 2px solid #007acc;
+    outline-offset: 2px;
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #007acc;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
