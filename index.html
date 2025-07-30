@@ -108,13 +108,14 @@
         }
 
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
+            column-count: 2; /* Adjust the number of columns as needed */
+            column-gap: 30px;
             margin-top: 30px;
         }
 
         .project-card {
+            break-inside: avoid; /* Prevent cards from breaking across columns */
+            margin-bottom: 30px; /* Add space between cards in the same column */
             background: white;
             border-radius: 15px;
             overflow: hidden;
@@ -147,6 +148,12 @@
             position: relative;
             width: 100%;
             background: #000;
+        }
+
+        .project-media.iframe {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .project-media iframe, .project-media video {
@@ -368,6 +375,18 @@
                         </div>
                     </div>
 
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Self-Driving Car with ML Agent</h3>
+                            <p>Explore the future of autonomous vehicles with this self-driving car simulation. Trained using Unity's ML Agent, this project demonstrates advanced machine learning techniques for navigation and decision-making in dynamic environments.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/f11Q_B37mNg?si=877z0-WePzMtz1BQ" 
+                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -400,6 +419,30 @@
                         </div>
                     </div>
 
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Self-Driving Car with ML Agent</h3>
+                            <p>Explore the future of autonomous vehicles with this self-driving car simulation. Trained using Unity's ML Agent, this project demonstrates advanced machine learning techniques for navigation and decision-making in dynamic environments.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/f11Q_B37mNg?si=877z0-WePzMtz1BQ" 
+                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Multi-Agent Training: Tower Defense Game</h3>
+                            <p>Delve into the complexities of multi-agent systems with this Tower Defense game. Utilizing Unity's ML Agent, this project showcases collaborative AI strategies for defense and resource management in a dynamic gaming environment.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/lyN6KTTSdGQ?si=bnOkWQ4DE6JGKBD2" 
+                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -413,9 +456,15 @@
                             <h3>Game Engine Development</h3>
                             <p>Explore the backbone of gaming with this custom game engine. Featuring a camera culling system and a robust physics component, this project ensures seamless collision management and optimized rendering for immersive experiences.</p>
                         </div>
-                        <div class="project-media">
+                        <div class="project-media grid-layout">
                             <iframe src="https://www.youtube.com/embed/7JefnI0f5Ns?si=ewfXl_eT29PONkaq" 
                                 title="Game Engine Demo" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/eqmH8OjjMIc?si=Sd6c5eA_abzC_N53" 
+                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/ffdVcCWtm7w?si=AspEFy31wby489BW" 
+                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     </div>
 
@@ -516,6 +565,18 @@
                             <div class="gallery-item">
                                 <img src="images/me231/ps5Many.jpg" alt="PS5 Controller Variations">
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Multiplayer Shooter Project</h3>
+                            <p>Engage in fast-paced action with this multiplayer shooter game. This project showcases advanced networking, real-time synchronization, and immersive gameplay mechanics for competitive environments.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/AVqy6FS15O0?si=ooxFih33HN5mRodx" 
+                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     </div>
 
