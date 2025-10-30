@@ -128,6 +128,12 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
+        @media (max-width: 768px) {
+            .project-grid {
+                column-count: 1;
+            }
+        }
+
         .project-header {
             padding: 25px;
             background: linear-gradient(135deg, #6c7b7f 0%, #4a5568 100%);
@@ -245,8 +251,7 @@
             }
 
             .project-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                column-count: 1;
             }
 
             .container {
@@ -464,6 +469,18 @@
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/ffdVcCWtm7w?si=AspEFy31wby489BW" 
                                 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>BLUE - Realistic Space Physics Game</h3>
+                            <p>Experience cutting-edge physics simulation in this Unreal Engine spaceship game. BLUE features realistic constraint-based physics with breakable ship components, delivering an authentic space combat experience where every impact matters and ship damage affects performance.</p>
+                        </div>
+                        <div class="project-media">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/W_bey56tRB0?si=g5DjGgfdDw1qnrt1" 
+                                title="BLUE - Realistic Space Physics Game" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     </div>
