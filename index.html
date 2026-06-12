@@ -4,672 +4,1236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Takatoshi Soeda - Game Developer Portfolio</title>
-    <meta name="description" content="Takatoshi Soeda's Game Development Portfolio - Unity, VR, AI, and Interactive Design">
+    <meta name="description" content="Takatoshi Soeda's portfolio featuring Unity, Unreal Engine, VR, AI, robotics, and interactive game development projects.">
     <style>
+        :root {
+            --ink: #172026;
+            --muted: #63707a;
+            --paper: #f6f8fb;
+            --surface: #ffffff;
+            --line: #dbe3ea;
+            --teal: #087f8c;
+            --teal-dark: #055d67;
+            --coral: #e85d4f;
+            --shadow: 0 18px 45px rgba(23, 32, 38, 0.12);
+            --radius: 8px;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--ink);
+            background: var(--paper);
             line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 20;
+            transform: translateY(-150%);
+            padding: 0.65rem 0.85rem;
+            border-radius: var(--radius);
+            color: #ffffff;
+            background: var(--teal-dark);
+            text-decoration: none;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
         }
 
         .container {
-            max-width: 1200px;
+            width: min(1180px, calc(100% - 32px));
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 80px 0;
+        .hero {
+            position: relative;
+            min-height: 78vh;
+            display: grid;
+            align-items: end;
+            color: #ffffff;
+            overflow: hidden;
+            background: #101820;
         }
 
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+        .hero video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.72;
         }
 
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(16, 24, 32, 0.92), rgba(16, 24, 32, 0.58) 50%, rgba(16, 24, 32, 0.24));
         }
 
-        /* Navigation */
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 760px;
+            padding: 7rem 0 5rem;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.8rem;
+            color: #8ee6df;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.4rem, 7vw, 5.6rem);
+            line-height: 0.98;
+            letter-spacing: 0;
+        }
+
+        .hero-subtitle {
+            max-width: 620px;
+            margin: 1.35rem 0 0;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: clamp(1.02rem, 2vw, 1.28rem);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.72rem 1rem;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button.primary {
+            background: var(--coral);
+            color: #ffffff;
+        }
+
+        .button.secondary {
+            border-color: rgba(255, 255, 255, 0.42);
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .stats {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            border-top: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .stat {
+            padding: 1.2rem;
+            background: rgba(16, 24, 32, 0.62);
+            backdrop-filter: blur(14px);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.35rem;
+            line-height: 1.1;
+        }
+
+        .stat span {
+            display: block;
+            margin-top: 0.25rem;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.9rem;
+        }
+
         .nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 10;
+            border-bottom: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(18px);
         }
 
-        .nav-container {
+        .nav-inner {
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 0;
+            justify-content: space-between;
+            gap: 1rem;
+            min-height: 70px;
+        }
+
+        .brand {
+            font-weight: 900;
+            text-decoration: none;
+            white-space: nowrap;
         }
 
         .nav-tabs {
             display: flex;
-            list-style: none;
+            gap: 0.35rem;
             margin: 0;
             padding: 0;
-            flex-wrap: wrap;
+            list-style: none;
+            overflow-x: auto;
         }
 
         .nav-tab {
-            background: none;
-            border: none;
-            padding: 20px 25px;
+            border: 0;
+            border-radius: 999px;
+            padding: 0.7rem 0.95rem;
+            color: var(--muted);
+            background: transparent;
+            font: inherit;
+            font-weight: 800;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
+            white-space: nowrap;
         }
 
-        .nav-tab:hover, .nav-tab.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-            background: #f8f9fa;
+        .nav-tab:hover,
+        .nav-tab.active {
+            color: #ffffff;
+            background: var(--teal);
         }
 
-        /* Content */
-        .content {
-            padding: 40px 0;
+        main {
+            padding: 4.5rem 0 5rem;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .section-kicker {
+            margin: 0 0 0.5rem;
+            color: var(--teal);
+            font-size: 0.8rem;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .intro h2,
+        .tab-content h2 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            line-height: 1.08;
+            letter-spacing: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .intro p {
+            margin: 1rem 0 0;
+            color: var(--muted);
+            font-size: 1.04rem;
+        }
+
+        .focus-list {
+            display: grid;
+            gap: 0.65rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .focus-list li {
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+        }
+
+        .focus-list strong {
+            display: block;
+            color: var(--ink);
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s ease-in-out;
+            min-width: 0;
         }
 
         .tab-content.active {
             display: block;
+            animation: fadeIn 220ms ease-out;
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 30px;
-            text-align: center;
+        .tab-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-bottom: 1.35rem;
+        }
+
+        .tab-heading p {
+            max-width: 560px;
+            margin: 0;
+            color: var(--muted);
         }
 
         .project-grid {
-            column-count: 2; /* Adjust the number of columns as needed */
-            column-gap: 30px;
-            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.2rem;
         }
 
         .project-card {
-            break-inside: avoid; /* Prevent cards from breaking across columns */
-            margin-bottom: 30px; /* Add space between cards in the same column */
-            background: white;
-            border-radius: 15px;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            min-width: 0;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: 0 4px 20px rgba(23, 32, 38, 0.06);
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        @media (max-width: 768px) {
-            .project-grid {
-                column-count: 1;
-            }
-        }
-
-        .project-header {
-            padding: 25px;
-            background: linear-gradient(135deg, #6c7b7f 0%, #4a5568 100%);
-            color: white;
-        }
-
-        .project-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .project-header p {
-            opacity: 0.9;
-            line-height: 1.5;
+            transform: translateY(-4px);
+            border-color: rgba(8, 127, 140, 0.36);
+            box-shadow: var(--shadow);
         }
 
         .project-media {
             position: relative;
-            width: 100%;
-            background: #000;
+            background: #101820;
         }
 
-        .project-media.iframe {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .project-media iframe, .project-media video {
-            width: 100%;
-            height: 300px;
-            border: none;
-            display: block;
-        }
-
+        .project-media iframe,
+        .project-media video,
         .project-media img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
             display: block;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            height: auto;
+            border: 0;
+            object-fit: cover;
         }
 
-        .project-media img:hover {
-            transform: scale(1.05);
+        .video-gallery {
+            display: grid;
+            background: #101820;
+        }
+
+        .video-main iframe {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            height: auto;
+            border: 0;
+        }
+
+        .video-strip-wrap {
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.16);
+            background: #101820;
+        }
+
+        .video-strip {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(160px, 42%);
+            gap: 1px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .video-strip::-webkit-scrollbar {
+            display: none;
+        }
+
+        .video-thumb {
+            position: relative;
+            display: grid;
+            min-height: 112px;
+            padding: 0;
+            border: 0;
+            color: #ffffff;
+            background: #101820;
+            cursor: pointer;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            opacity: 0.72;
+            transition: opacity 160ms ease, transform 160ms ease;
+        }
+
+        .video-thumb span {
+            position: absolute;
+            left: 0.65rem;
+            right: 0.65rem;
+            bottom: 0.6rem;
+            z-index: 1;
+            font-size: 0.78rem;
+            font-weight: 900;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .video-thumb::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(16, 24, 32, 0), rgba(16, 24, 32, 0.72));
+        }
+
+        .video-thumb:hover img,
+        .video-thumb.active img {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+
+        .video-thumb.active {
+            outline: 3px solid var(--coral);
+            outline-offset: -3px;
+        }
+
+        .image-gallery .project-media img {
+            cursor: zoom-in;
+        }
+
+        .support-strip {
+            grid-auto-columns: minmax(130px, 33.333%);
+        }
+
+        .support-strip img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            height: 100%;
+            object-fit: cover;
+            cursor: zoom-in;
+        }
+
+        .image-thumb {
+            min-height: auto;
+        }
+
+        .strip-control {
+            position: absolute;
+            top: 50%;
+            z-index: 2;
+            display: grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 999px;
+            color: #ffffff;
+            background: rgba(16, 24, 32, 0.78);
+            font-size: 1.25rem;
+            line-height: 1;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+
+        .strip-control:hover {
+            background: rgba(8, 127, 140, 0.94);
+        }
+
+        .strip-control.prev {
+            left: 0.5rem;
+        }
+
+        .strip-control.next {
+            right: 0.5rem;
+        }
+
+        .project-body {
+            display: grid;
+            gap: 1rem;
+            padding: 1.1rem;
+        }
+
+        .project-title-row {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .project-body h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .project-body p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tags li {
+            border-radius: 999px;
+            padding: 0.28rem 0.55rem;
+            color: var(--teal-dark);
+            background: #e6f5f6;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .project-link {
+            flex: 0 0 auto;
+            color: var(--teal-dark);
+            font-weight: 900;
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            padding: 25px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1px;
+            background: var(--line);
         }
 
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .gallery-item img {
+        .gallery-grid img {
+            display: block;
             width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        /* Demo Video Section */
-        .demo-section {
-            text-align: center;
-            padding: 40px 0;
-            background: white;
-            margin: 20px 0;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .demo-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .demo-video {
-            max-width: 800px;
-            margin: 20px auto;
-        }
-
-        .demo-video video {
-            width: 100%;
+            aspect-ratio: 4 / 3;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            object-fit: cover;
+            cursor: zoom-in;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .nav-tabs {
-                justify-content: center;
-            }
-
-            .nav-tab {
-                padding: 15px 15px;
-                font-size: 0.9rem;
-            }
-
-            .project-grid {
-                column-count: 1;
-            }
-
-            .container {
-                padding: 0 15px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Footer */
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-        }
-
-        /* Image Modal/Lightbox */
         .modal {
-            display: none;
             position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            cursor: pointer;
+            inset: 0;
+            z-index: 30;
+            display: none;
+            place-items: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.88);
+        }
+
+        .modal.open {
+            display: grid;
         }
 
         .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
+            max-width: min(1100px, 92vw);
+            max-height: 84vh;
+            border-radius: var(--radius);
             object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
         }
 
         .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius);
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.35);
+            font-size: 1.5rem;
+            line-height: 1;
             cursor: pointer;
-            transition: color 0.3s ease;
-            z-index: 10000;
         }
 
-        .close:hover {
-            color: #ccc;
+        .footer {
+            border-top: 1px solid var(--line);
+            padding: 2rem 0;
+            color: var(--muted);
+            background: #ffffff;
+            text-align: center;
         }
 
-        .gallery-item img {
-            cursor: pointer;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .gallery-item img:hover {
-            transform: scale(1.05);
-            opacity: 0.8;
+        @media (max-width: 900px) {
+            .hero {
+                min-height: 68vh;
+            }
+
+            .stats,
+            .intro,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-inner {
+                display: block;
+                padding: 0.85rem 0;
+            }
+
+            .brand {
+                display: block;
+                margin-bottom: 0.65rem;
+            }
+
+            main {
+                padding-top: 3rem;
+            }
         }
 
-        .project-media img {
-            cursor: pointer;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 24px, 1180px);
+            }
+
+            .hero-content {
+                padding: 5rem 0 3rem;
+            }
+
+            .eyebrow {
+                max-width: 22rem;
+                font-size: 0.72rem;
+                letter-spacing: 0.08em;
+            }
+
+            .hero-subtitle {
+                max-width: 22rem;
+                font-size: 1rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat {
+                padding: 0.9rem 1rem;
+            }
+
+            .intro h2,
+            .tab-content h2 {
+                max-width: 10.5em;
+                font-size: 1.9rem;
+            }
+
+            .tab-heading {
+                display: block;
+            }
+
+            .tab-heading p {
+                margin-top: 0.8rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-strip,
+            .support-strip {
+                grid-auto-columns: minmax(140px, 72%);
+            }
         }
 
-        .project-media img:hover {
-            transform: scale(1.02);
-            opacity: 0.8;
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <a class="skip-link" href="#portfolio">Skip to portfolio</a>
+
+    <header class="hero" id="top">
+        <video autoplay muted loop playsinline poster="images/LOM/LOM.png">
+            <source src="videos/GameVideo.mp4" type="video/mp4">
+        </video>
         <div class="container">
-            <h1>Takatoshi Soeda</h1>
-            <p>Game Developer & Interactive Designer</p>
-            <p>Specializing in Unity, VR, AI, and Immersive Experiences</p>
+            <div class="hero-content">
+                <p class="eyebrow">Game Developer / Interactive Designer</p>
+                <h1>Takatoshi Soeda</h1>
+                <p class="hero-subtitle">I build physics-driven games, intelligent agents, immersive VR workflows, and interactive simulations across Unity, Unreal Engine, and real-time 3D systems.</p>
+                <div class="hero-actions" aria-label="Page shortcuts">
+                    <a class="button primary" href="#portfolio">View Projects</a>
+                    <a class="button secondary" href="https://github.com/SCP-11" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="stats" aria-label="Portfolio highlights">
+            <div class="stat">
+                <strong>Unity + Unreal</strong>
+                <span>Gameplay, tools, and simulation work</span>
+            </div>
+            <div class="stat">
+                <strong>AI Systems</strong>
+                <span>ML-Agents, NPC behavior, conversation</span>
+            </div>
+            <div class="stat">
+                <strong>VR / XR</strong>
+                <span>Immersive workspace experiments</span>
+            </div>
+            <div class="stat">
+                <strong>3D Pipeline</strong>
+                <span>Maya, modeling, graphics, rendering</span>
+            </div>
         </div>
     </header>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <ul class="nav-tabs">
-                <li><button class="nav-tab active" data-tab="games">Games</button></li>
-                <li><button class="nav-tab" data-tab="ai">AI</button></li>
-                <li><button class="nav-tab" data-tab="robotics">Robotics</button></li>
+    <nav class="nav" aria-label="Project categories">
+        <div class="container nav-inner">
+            <a class="brand" href="#top">Takatoshi Soeda</a>
+            <ul class="nav-tabs" role="tablist">
+                <li><button class="nav-tab active" id="tab-games" type="button" role="tab" aria-selected="true" aria-controls="games" data-tab="games">Games</button></li>
+                <li><button class="nav-tab" id="tab-ai" type="button" role="tab" aria-selected="false" aria-controls="ai" data-tab="ai">AI</button></li>
+                <li><button class="nav-tab" id="tab-robotics" type="button" role="tab" aria-selected="false" aria-controls="robotics" data-tab="robotics">Robotics</button></li>
+                <li><button class="nav-tab" id="tab-art" type="button" role="tab" aria-selected="false" aria-controls="art" data-tab="art">3D / Art</button></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Content -->
-    <main class="content">
+    <main id="portfolio">
         <div class="container">
-            
-            <!-- Robotics -->
-            <div id="robotics" class="tab-content">
-                <h2 class="section-title">Robotics Projects</h2>
-                <div class="project-grid">
-                    
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Ball Balancing Robot Simulation</h3>
-                            <p>Experience the cutting-edge of robotics with this Unity simulation. Utilizing advanced PID control systems, this project demonstrates real-time ball balancing with unparalleled precision in platform movement control, showcasing the future of automation.</p>
-                        </div>
-                        <div class="project-media">
-                            <iframe src="https://www.youtube.com/embed/bJMv3oY-dB8?si=0avdyuY6dOirK7Y-" 
-                                title="Ball Balancing Robot" allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Self-Driving Car with ML Agent</h3>
-                            <p>Explore the future of autonomous vehicles with this self-driving car simulation. Trained using Unity's ML Agent, this project demonstrates advanced machine learning techniques for navigation and decision-making in dynamic environments.</p>
-                        </div>
-                        <div class="project-media">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/f11Q_B37mNg?si=877z0-WePzMtz1BQ" 
-                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-
+            <section class="intro" aria-labelledby="portfolio-title">
+                <div>
+                    <p class="section-kicker">Selected Work</p>
+                    <h2 id="portfolio-title">Interactive projects with clear systems, playable feel, and visible craft.</h2>
+                    <p>Each project below is presented around the artifact itself: video first, then the systems and design decisions behind it. The goal is a faster read for recruiters, collaborators, and anyone trying to understand the range of the work.</p>
                 </div>
-            </div>
+                <ul class="focus-list">
+                    <li><strong>Gameplay engineering</strong> Physics, cameras, controls, networking, and player-facing polish.</li>
+                    <li><strong>Applied AI</strong> Training, simulation behavior, and conversational game experiences.</li>
+                    <li><strong>Technical art</strong> 3D modeling, rendering foundations, and production-minded visual work.</li>
+                </ul>
+            </section>
 
-            <!-- AI Projects -->
-            <div id="ai" class="tab-content">
-                <h2 class="section-title">AI Projects</h2>
-                <div class="project-grid">
-                    
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Research Game AI</h3>
-                            <p>Dive into the realm of intelligent gaming with AI-driven NPCs. This project focuses on creating adaptive and intelligent behaviors that elevate gameplay, making virtual worlds more immersive and engaging than ever before.</p>
-                        </div>
-                        <div class="project-media">
-                            <iframe src="https://www.youtube.com/embed/ByitSvdkMvc?si=JOs2f83ymgZvrdNT" 
-                                title="Research Game AI" allowfullscreen></iframe>
-                        </div>
+            <section id="games" class="tab-content active" role="tabpanel" aria-labelledby="tab-games">
+                <div class="tab-heading">
+                    <div>
+                        <p class="section-kicker">Games</p>
+                        <h2>Game Design Projects</h2>
                     </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Conversational AI in Games</h3>
-                            <p>Revolutionize player interaction with natural language processing. This project integrates conversational AI into game environments, enabling AI characters to engage in meaningful dialogues and assist players in solving complex puzzles.</p>
+                    <p>Physics-heavy prototypes, combat systems, engine features, VR experiments, and game-feel studies.</p>
+                </div>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <div class="project-media video-gallery" data-video-gallery>
+                            <div class="video-main">
+                                <iframe loading="lazy" src="https://www.youtube.com/embed/7JefnI0f5Ns?si=ewfXl_eT29PONkaq" title="Game Engine Demo" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-strip-wrap">
+                                <button class="strip-control prev" type="button" aria-label="Scroll game engine videos left">&lsaquo;</button>
+                                <div class="video-strip" aria-label="Game engine supporting videos">
+                                    <button class="video-thumb active" type="button" data-video-src="https://www.youtube.com/embed/7JefnI0f5Ns?si=ewfXl_eT29PONkaq" data-video-title="Game Engine Demo" aria-label="Open game engine demo">
+                                        <img loading="lazy" src="https://img.youtube.com/vi/7JefnI0f5Ns/hqdefault.jpg" alt="">
+                                        <span>Main Demo</span>
+                                    </button>
+                                    <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/eqmH8OjjMIc?si=Sd6c5eA_abzC_N53" data-video-title="Game engine collision demo" aria-label="Open game engine collision demo">
+                                        <img loading="lazy" src="https://img.youtube.com/vi/eqmH8OjjMIc/hqdefault.jpg" alt="">
+                                        <span>Collision Demo</span>
+                                    </button>
+                                    <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/ffdVcCWtm7w?si=AspEFy31wby489BW" data-video-title="Game engine rendering demo" aria-label="Open game engine rendering demo">
+                                        <img loading="lazy" src="https://img.youtube.com/vi/ffdVcCWtm7w/hqdefault.jpg" alt="">
+                                        <span>Rendering Demo</span>
+                                    </button>
+                                </div>
+                                <button class="strip-control next" type="button" aria-label="Scroll game engine videos right">&rsaquo;</button>
+                            </div>
                         </div>
+                        <div class="project-body">
+                            <div class="project-title-row">
+                                <h3>Game Engine Development</h3>
+                            </div>
+                            <p>Custom engine work focused on camera culling, physics components, collision handling, and optimized rendering for responsive interactive scenes.</p>
+                            <ul class="tags"><li>C++</li><li>Rendering</li><li>Physics</li><li>Tools</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media video-gallery" data-video-gallery>
+                            <div class="video-main">
+                                <iframe loading="lazy" src="https://www.youtube.com/embed/5IDhlikc4F4?si=hNKNX0MHRV1ZEtAv" title="BLUE official trailer" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-strip-wrap">
+                                <button class="strip-control prev" type="button" aria-label="Scroll BLUE videos left">&lsaquo;</button>
+                                <div class="video-strip" aria-label="BLUE video playlist">
+                                    <button class="video-thumb active" type="button" data-video-src="https://www.youtube.com/embed/5IDhlikc4F4?si=hNKNX0MHRV1ZEtAv" data-video-title="BLUE official trailer" aria-label="Play BLUE official trailer">
+                                        <img loading="lazy" src="https://img.youtube.com/vi/5IDhlikc4F4/hqdefault.jpg" alt="">
+                                        <span>Official Trailer</span>
+                                    </button>
+                                    <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/W_bey56tRB0?si=g5DjGgfdDw1qnrt1" data-video-title="BLUE gameplay demo" aria-label="Play BLUE gameplay demo">
+                                        <img loading="lazy" src="https://img.youtube.com/vi/W_bey56tRB0/hqdefault.jpg" alt="">
+                                        <span>Gameplay Demo</span>
+                                    </button>
+                                </div>
+                                <button class="strip-control next" type="button" aria-label="Scroll BLUE videos right">&rsaquo;</button>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>BLUE - Realistic Space Physics Game</h3>
+                            <p>Unreal Engine spaceship game with constraint-based physics, breakable ship components, and damage states that affect combat performance.</p>
+                            <ul class="tags"><li>Unreal Engine</li><li>Physics</li><li>Space Combat</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
                         <div class="project-media">
-                            <video controls>
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/h6eDBY4BFXA?si=pzAOj4ddo3qDZ0wd" title="Space Chess Game" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-body">
+                            <h3>Space Chess Innovation</h3>
+                            <p>A strategy prototype that blends chess logic with real-time game systems including asteroids, special attacks, and dynamic movement options.</p>
+                            <ul class="tags"><li>Design</li><li>Strategy</li><li>Prototype</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/CGKFLy39-X0?si=gkhURo3ANoRecM-V" title="Space Movement Demo" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-body">
+                            <h3>Space Combat Simulation</h3>
+                            <p>A 3D movement and combat prototype inspired by vehicle-scale space warfare, with a focus on readable controls and immersive motion.</p>
+                            <ul class="tags"><li>Unity</li><li>Controls</li><li>Combat</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media video-main">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/hpdU34ydxck?si=heik70aouC_LpGVD" title="Library of Meialia Demo" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-body">
+                            <h3>Library of Meialia</h3>
+                            <p>A 2D roguelike pixel-art RPG from Minerva Game Studio, highlighting character movement, animation, and world presentation.</p>
+                            <ul class="tags"><li>Pixel Art</li><li>Animation</li><li>Team Project</li></ul>
+                        </div>
+                        <div class="video-strip-wrap">
+                            <button class="strip-control prev" type="button" aria-label="Scroll Library of Meialia images left">&lsaquo;</button>
+                            <div class="video-strip support-strip" aria-label="Library of Meialia supporting images">
+                                <button class="video-thumb active" type="button" data-video-src="https://www.youtube.com/embed/hpdU34ydxck?si=heik70aouC_LpGVD" data-video-title="Library of Meialia Demo" aria-label="Play Library of Meialia demo">
+                                    <img loading="lazy" src="https://img.youtube.com/vi/hpdU34ydxck/hqdefault.jpg" alt="">
+                                    <span>Main Demo</span>
+                                </button>
+                                <img loading="lazy" src="images/LOM/LOM.png" alt="Library of Meialia gameplay screenshot">
+                                <img loading="lazy" src="images/LOM/Amlos.png" alt="Amlos character design">
+                                <img loading="lazy" src="images/gallery/portfolio/LOM.png" alt="Library of Meialia promotional image">
+                            </div>
+                            <button class="strip-control next" type="button" aria-label="Scroll Library of Meialia images right">&rsaquo;</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/Xhhh-HpClW0?si=A-mDwIBFl7OIm2jF" title="VR Workspace Demo" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-body">
+                            <h3>VR Workspace</h3>
+                            <p>An immersive productivity experiment exploring how virtual workspaces can support multitasking beyond traditional 2D monitor setups.</p>
+                            <ul class="tags"><li>VR</li><li>UX</li><li>Unity</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/AVqy6FS15O0?si=ooxFih33HN5mRodx" title="Multiplayer Shooter Project" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-body">
+                            <h3>Multiplayer Shooter Project</h3>
+                            <p>A competitive shooter prototype centered on networking, real-time synchronization, and readable combat interactions.</p>
+                            <ul class="tags"><li>Networking</li><li>FPS</li><li>Multiplayer</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <a href="https://scp-11.github.io/Computer-Graphics-599/P2-SCP-11/for_students/gr-01-01.html" target="_blank" rel="noopener">
+                                <img loading="lazy" src="images/cs599/P2.png" alt="Computer Graphics project preview">
+                            </a>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-title-row">
+                                <h3>Computer Graphics</h3>
+                                <a class="project-link" href="https://scp-11.github.io/Computer-Graphics-599/P2-SCP-11/for_students/gr-01-01.html" target="_blank" rel="noopener">Open</a>
+                            </div>
+                            <p>Foundational 2D and 3D graphics work covering transforms, hierarchical modeling, lighting, texturing, and web-based presentation.</p>
+                            <ul class="tags"><li>WebGL</li><li>Graphics</li><li>Rendering</li></ul>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="ai" class="tab-content" role="tabpanel" aria-labelledby="tab-ai">
+                <div class="tab-heading">
+                    <div>
+                        <p class="section-kicker">AI</p>
+                        <h2>AI Projects</h2>
+                    </div>
+                    <p>Game AI experiments spanning behavior, training, simulation, and natural-language interaction.</p>
+                </div>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <div class="project-media">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/ByitSvdkMvc?si=JOs2f83ymgZvrdNT" title="Research Game AI" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-body">
+                            <h3>Research Game AI</h3>
+                            <p>Adaptive NPC behavior work designed to make virtual characters feel more responsive, strategic, and engaging during play.</p>
+                            <ul class="tags"><li>NPCs</li><li>Behavior</li><li>Gameplay AI</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <video controls preload="metadata">
                                 <source src="videos/Convai.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Self-Driving Car with ML Agent</h3>
-                            <p>Explore the future of autonomous vehicles with this self-driving car simulation. Trained using Unity's ML Agent, this project demonstrates advanced machine learning techniques for navigation and decision-making in dynamic environments.</p>
+                        <div class="project-body">
+                            <h3>Conversational AI in Games</h3>
+                            <p>An escape-room style interaction prototype where players talk with AI characters to get assistance, context, and puzzle guidance.</p>
+                            <ul class="tags"><li>NLP</li><li>Dialogue</li><li>Immersion</li></ul>
                         </div>
+                    </article>
+
+                    <article class="project-card">
                         <div class="project-media">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/f11Q_B37mNg?si=877z0-WePzMtz1BQ" 
-                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/f11Q_B37mNg?si=877z0-WePzMtz1BQ" title="Self-Driving Car with ML Agent" allowfullscreen></iframe>
                         </div>
-                    </div>
+                        <div class="project-body">
+                            <h3>Self-Driving Car with ML-Agents</h3>
+                            <p>A Unity ML-Agents autonomous driving simulation focused on training, navigation, and decision-making in dynamic environments.</p>
+                            <ul class="tags"><li>ML-Agents</li><li>Training</li><li>Simulation</li></ul>
+                        </div>
+                    </article>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Multi-Agent Training: Tower Defense Game</h3>
-                            <p>Delve into the complexities of multi-agent systems with this Tower Defense game. Utilizing Unity's ML Agent, this project showcases collaborative AI strategies for defense and resource management in a dynamic gaming environment.</p>
-                        </div>
+                    <article class="project-card">
                         <div class="project-media">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/lyN6KTTSdGQ?si=bnOkWQ4DE6JGKBD2" 
-                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/lyN6KTTSdGQ?si=bnOkWQ4DE6JGKBD2" title="Tower Defense AI" allowfullscreen></iframe>
                         </div>
-                    </div>
-
+                        <div class="project-body">
+                            <h3>Multi-Agent Tower Defense</h3>
+                            <p>A multi-agent systems project exploring collaborative defense, resource use, and strategy in a tower defense environment.</p>
+                            <ul class="tags"><li>Multi-Agent</li><li>Unity</li><li>Strategy</li></ul>
+                        </div>
+                    </article>
                 </div>
-            </div>
+            </section>
 
-            <!-- Game Design -->
-            <div id="games" class="tab-content active">
-                <h2 class="section-title">Game Design Projects</h2>
+            <section id="robotics" class="tab-content" role="tabpanel" aria-labelledby="tab-robotics">
+                <div class="tab-heading">
+                    <div>
+                        <p class="section-kicker">Robotics</p>
+                        <h2>Robotics Projects</h2>
+                    </div>
+                    <p>Control systems and simulation projects that connect real-time 3D environments with robotics concepts.</p>
+                </div>
                 <div class="project-grid">
-                    
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Game Engine Development</h3>
-                            <p>Explore the backbone of gaming with this custom game engine. Featuring a camera culling system and a robust physics component, this project ensures seamless collision management and optimized rendering for immersive experiences.</p>
-                        </div>
-                        <div class="project-media grid-layout">
-                            <iframe src="https://www.youtube.com/embed/7JefnI0f5Ns?si=ewfXl_eT29PONkaq" 
-                                title="Game Engine Demo" allowfullscreen></iframe>
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/eqmH8OjjMIc?si=Sd6c5eA_abzC_N53" 
-                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/ffdVcCWtm7w?si=AspEFy31wby489BW" 
-                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>BLUE - Realistic Space Physics Game</h3>
-                            <p>Experience cutting-edge physics simulation in this Unreal Engine spaceship game. BLUE features realistic constraint-based physics with breakable ship components, delivering an authentic space combat experience where every impact matters and ship damage affects performance.</p>
-                        </div>
+                    <article class="project-card">
                         <div class="project-media">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/W_bey56tRB0?si=g5DjGgfdDw1qnrt1" 
-                                title="BLUE - Realistic Space Physics Game" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/bJMv3oY-dB8?si=0avdyuY6dOirK7Y-" title="Ball Balancing Robot" allowfullscreen></iframe>
                         </div>
-                    </div>
+                        <div class="project-body">
+                            <h3>Ball Balancing Robot Simulation</h3>
+                            <p>A Unity robotics simulation using PID control to keep a ball centered on a platform with precise movement correction.</p>
+                            <ul class="tags"><li>PID Control</li><li>Unity</li><li>Robotics</li></ul>
+                        </div>
+                    </article>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Space Chess Innovation</h3>
-                            <p>Redefine strategy gaming with Space Chess. This project combines traditional chess mechanics with dynamic video game elements like asteroids, special attacks, and fluid movement systems, creating a truly unique experience.</p>
-                        </div>
+                    <article class="project-card">
                         <div class="project-media">
-                            <iframe src="https://www.youtube.com/embed/h6eDBY4BFXA?si=pzAOj4ddo3qDZ0wd" 
-                                title="Space Chess Game" allowfullscreen></iframe>
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/VrtQpVSJxCo?si=6Wm-4Vhbz-pFg6n6" title="Robot Yondu project video" allowfullscreen></iframe>
                         </div>
-                    </div>
+                        <div class="project-body">
+                            <h3>Robot Yondu</h3>
+                            <p>A robotics project demonstrating interactive robot behavior and motion through a focused prototype video.</p>
+                            <ul class="tags"><li>Robotics</li><li>Prototype</li><li>Motion</li></ul>
+                        </div>
+                    </article>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Space Combat Simulation</h3>
-                            <p>Immerse yourself in realistic space warfare inspired by War Thunder and Gundam. This project features advanced 3D movement and combat mechanics, delivering an unparalleled space combat experience.</p>
-                        </div>
+                    <article class="project-card">
                         <div class="project-media">
-                            <iframe src="https://www.youtube.com/embed/CGKFLy39-X0?si=gkhURo3ANoRecM-V" 
-                                title="Space Movement Demo" allowfullscreen></iframe>
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/f11Q_B37mNg?si=877z0-WePzMtz1BQ" title="Self-driving simulation" allowfullscreen></iframe>
                         </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Library of Meialia</h3>
-                            <p>Step into a 2D Rogue-like Pixel-art RPG crafted by Minerva Game Studio. This project highlights intricate character movement, design, and animation, bringing a vibrant world to life.</p>
+                        <div class="project-body">
+                            <h3>Autonomous Vehicle Simulation</h3>
+                            <p>A machine-learning based driving simulation that connects robotics navigation concepts with real-time decision systems.</p>
+                            <ul class="tags"><li>Autonomy</li><li>ML-Agents</li><li>Simulation</li></ul>
                         </div>
-                        <div class="project-media">
-                            <iframe src="https://www.youtube.com/embed/hpdU34ydxck?si=heik70aouC_LpGVD" 
-                                title="Library of Meialia Demo" allowfullscreen></iframe>
-                        </div>
-                        <div class="gallery-grid">
-                            <div class="gallery-item">
-                                <img src="images/LOM/LOM.png" alt="Library of Meialia Screenshot">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="images/LOM/Amlos.png" alt="Amlos Character Design">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Computer Graphics</h3>
-                            <p>Master the art of 2D/3D graphics with this foundational project. Learn coordinate systems, transformations, hierarchical modeling, lighting, and texturing to create visually stunning digital environments.</p>
-                        </div>
-                        <div class="project-media">
-                            <a href="https://scp-11.github.io/Computer-Graphics-599/P2-SCP-11/for_students/gr-01-01.html" target="_blank">
-                                <img src="images/cs599/P2.png" alt="Computer Graphics Project">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>VR Workspace</h3>
-                            <p>Discover the future of productivity with VR Workspace. This project explores the efficiency of virtual environments compared to traditional 2D screens, paving the way for innovative work solutions.</p>
-                        </div>
-                        <div class="project-media">
-                            <iframe src="https://www.youtube.com/embed/Xhhh-HpClW0?si=A-mDwIBFl7OIm2jF" 
-                                title="VR Workspace Demo" allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>3D Digital Studio</h3>
-                            <p>Elevate your 3D modeling skills with Autodesk Maya. This project delves into professional techniques and systems, enabling the creation of intricate and realistic 3D models.</p>
-                        </div>
-                        <div class="gallery-grid">
-                            <div class="gallery-item">
-                                <img src="images/art429/mugBottleLeaf_Takatoshi.jpg" alt="3D Rendered Scene">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="images/art429/Shovel2_Takatoshi.jpg" alt="3D Shovel Model">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="images/art429/mech.jpg" alt="Mechanical Robot Model">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Geometric Modeling</h3>
-                            <p>Push the boundaries of design and manufacturing with advanced 3D modeling. This project emphasizes precision and technical accuracy, making it ideal for professional applications.</p>
-                        </div>
-                        <div class="gallery-grid">
-                            <div class="gallery-item">
-                                <img src="images/me231/Tank_page-Final.jpg" alt="Tank Design">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="images/me231/ps5.jpg" alt="PS5 Controller Model">
-                            </div>
-                            <div class="gallery-item">
-                                <img src="images/me231/ps5Many.jpg" alt="PS5 Controller Variations">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Multiplayer Shooter Project</h3>
-                            <p>Engage in fast-paced action with this multiplayer shooter game. This project showcases advanced networking, real-time synchronization, and immersive gameplay mechanics for competitive environments.</p>
-                        </div>
-                        <div class="project-media">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/AVqy6FS15O0?si=ooxFih33HN5mRodx" 
-                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-
+                    </article>
                 </div>
-            </div>
+            </section>
 
+            <section id="art" class="tab-content" role="tabpanel" aria-labelledby="tab-art">
+                <div class="tab-heading">
+                    <div>
+                        <p class="section-kicker">3D / Art</p>
+                        <h2>3D Modeling and Digital Forms</h2>
+                    </div>
+                    <p>Modeling, rendering, and visual studies that support stronger scene building and asset production.</p>
+                </div>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <div class="image-gallery">
+                            <div class="project-media">
+                                <img loading="lazy" src="images/art429/mugBottleLeaf_Takatoshi.jpg" alt="Rendered mug, bottle, and leaf scene">
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>3D Digital Studio</h3>
+                            <p>Autodesk Maya studies focused on modeling workflows, material presentation, and professional 3D asset creation.</p>
+                            <ul class="tags"><li>Maya</li><li>Modeling</li><li>Rendering</li></ul>
+                        </div>
+                        <div class="video-strip-wrap">
+                            <button class="strip-control prev" type="button" aria-label="Scroll 3D Digital Studio images left">&lsaquo;</button>
+                            <div class="video-strip support-strip" aria-label="3D Digital Studio supporting images">
+                                <img loading="lazy" src="images/art429/mugBottleLeaf_Takatoshi.jpg" alt="Rendered mug, bottle, and leaf scene">
+                                <img loading="lazy" src="images/art429/Shovel2_Takatoshi.jpg" alt="Rendered shovel model">
+                                <img loading="lazy" src="images/art429/mech.jpg" alt="Mechanical robot model">
+                            </div>
+                            <button class="strip-control next" type="button" aria-label="Scroll 3D Digital Studio images right">&rsaquo;</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="image-gallery">
+                            <div class="project-media">
+                                <img loading="lazy" src="images/me231/Tank_page-Final.jpg" alt="Tank design presentation">
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>Geometric Modeling</h3>
+                            <p>Advanced modeling studies emphasizing shape accuracy, mechanical detail, and design-for-manufacturing discipline.</p>
+                            <ul class="tags"><li>CAD</li><li>Hard Surface</li><li>Precision</li></ul>
+                        </div>
+                        <div class="video-strip-wrap">
+                            <button class="strip-control prev" type="button" aria-label="Scroll Geometric Modeling images left">&lsaquo;</button>
+                            <div class="video-strip support-strip" aria-label="Geometric Modeling supporting images">
+                                <img loading="lazy" src="images/me231/Tank_page-Final.jpg" alt="Tank design presentation">
+                                <img loading="lazy" src="images/me231/ps5.jpg" alt="PS5 controller model">
+                                <img loading="lazy" src="images/me231/ps5Many.jpg" alt="PS5 controller model variations">
+                            </div>
+                            <button class="strip-control next" type="button" aria-label="Scroll Geometric Modeling images right">&rsaquo;</button>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="image-gallery">
+                            <div class="project-media">
+                                <img loading="lazy" src="images/gallery/portfolio/SoedaTakatoshi_RealityUnreality.jpg" alt="Reality Unreality digital composition">
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <h3>Digital Forms</h3>
+                            <p>Photoshop and 3D form studies exploring image remixing, compositing, and mecha-inspired visual design.</p>
+                            <ul class="tags"><li>Photoshop</li><li>Composition</li><li>Concept</li></ul>
+                        </div>
+                        <div class="video-strip-wrap">
+                            <button class="strip-control prev" type="button" aria-label="Scroll Digital Forms images left">&lsaquo;</button>
+                            <div class="video-strip support-strip" aria-label="Digital Forms supporting images">
+                                <img loading="lazy" src="images/gallery/portfolio/SoedaTakatoshi_RealityUnreality.jpg" alt="Reality Unreality digital composition">
+                                <img loading="lazy" src="images/gallery/portfolio/SoedaTakatoshi_Collage_1.jpg" alt="Digital collage composition">
+                                <img loading="lazy" src="images/gallery/portfolio/1UGLq5.png" alt="Digital form study">
+                            </div>
+                            <button class="strip-control next" type="button" aria-label="Scroll Digital Forms images right">&rsaquo;</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </div>
     </main>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <div id="imageModal" class="modal" aria-hidden="true" role="dialog" aria-label="Expanded image preview">
+        <button class="close" type="button" aria-label="Close image preview">&times;</button>
+        <img class="modal-content" id="modalImage" alt="">
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Takatoshi Soeda. All rights reserved.</p>
+            <p>&copy; 2026 Takatoshi Soeda. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Tab functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.nav-tab');
-            const contents = document.querySelectorAll('.tab-content');
+            const tabs = Array.from(document.querySelectorAll('.nav-tab'));
+            const contents = Array.from(document.querySelectorAll('.tab-content'));
+            const validTabs = new Set(tabs.map((tab) => tab.dataset.tab));
 
-            tabs.forEach(tab => {
+            function activateTab(tabId, updateHash) {
+                if (!validTabs.has(tabId)) {
+                    tabId = 'games';
+                }
+
+                tabs.forEach((tab) => {
+                    const isActive = tab.dataset.tab === tabId;
+                    tab.classList.toggle('active', isActive);
+                    tab.setAttribute('aria-selected', String(isActive));
+                });
+
+                contents.forEach((content) => {
+                    const isActive = content.id === tabId;
+                    content.classList.toggle('active', isActive);
+                    content.hidden = !isActive;
+                });
+
+                if (updateHash) {
+                    history.replaceState(null, '', '#' + tabId);
+                }
+            }
+
+            tabs.forEach((tab) => {
                 tab.addEventListener('click', function() {
-                    const targetTab = this.getAttribute('data-tab');
-
-                    // Remove active class from all tabs and contents
-                    tabs.forEach(t => t.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
-
-                    // Add active class to clicked tab and corresponding content
-                    this.classList.add('active');
-                    document.getElementById(targetTab).classList.add('active');
+                    activateTab(this.dataset.tab, true);
                 });
             });
 
-            // Image modal functionality
+            const initialTab = window.location.hash.replace('#', '');
+            activateTab(initialTab || 'games', false);
+
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
-            const closeBtn = document.getElementsByClassName('close')[0];
+            const closeBtn = modal.querySelector('.close');
 
-            // Add click event to all images
-            document.querySelectorAll('.gallery-item img, .project-media img').forEach(img => {
-                img.addEventListener('click', function() {
-                    modal.style.display = 'block';
-                    modalImg.src = this.src;
-                    modalImg.alt = this.alt;
+            function closeModal() {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                modalImg.removeAttribute('src');
+                modalImg.alt = '';
+            }
+
+            function withAutoplay(src) {
+                const separator = src.includes('?') ? '&' : '?';
+                return src.includes('autoplay=1') ? src : `${src}${separator}autoplay=1`;
+            }
+
+            document.querySelectorAll('.video-strip-wrap').forEach((wrap) => {
+                const strip = wrap.querySelector('.video-strip');
+
+                wrap.querySelector('.strip-control.prev')?.addEventListener('click', () => {
+                    strip.scrollBy({ left: -strip.clientWidth * 0.7, behavior: 'smooth' });
+                });
+
+                wrap.querySelector('.strip-control.next')?.addEventListener('click', () => {
+                    strip.scrollBy({ left: strip.clientWidth * 0.7, behavior: 'smooth' });
                 });
             });
 
-            // Close modal when clicking X
-            closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
+            document.querySelectorAll('.video-thumb').forEach((thumb) => {
+                thumb.addEventListener('click', () => {
+                    const card = thumb.closest('.project-card');
+                    const mainFrame = card?.querySelector('.video-main iframe');
+
+                    if (!mainFrame) {
+                        return;
+                    }
+
+                    card.querySelectorAll('.video-thumb').forEach((item) => {
+                        item.classList.toggle('active', item === thumb);
+                    });
+
+                    mainFrame.src = withAutoplay(thumb.dataset.videoSrc);
+                    mainFrame.title = thumb.dataset.videoTitle;
+                    mainFrame.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
             });
 
-            // Close modal when clicking outside the image
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
+            document.querySelectorAll('.gallery-grid img, .project-media img, .support-strip img').forEach((img) => {
+                img.addEventListener('click', function(event) {
+                    if (this.closest('a') || this.closest('.video-thumb')) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    modalImg.src = this.src;
+                    modalImg.alt = this.alt;
+                    modal.classList.add('open');
+                    modal.setAttribute('aria-hidden', 'false');
+                    closeBtn.focus();
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
                 }
             });
 
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    modal.style.display = 'none';
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.classList.contains('open')) {
+                    closeModal();
                 }
             });
         });
-    </script>
     </script>
 </body>
 </html>
