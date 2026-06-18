@@ -358,6 +358,29 @@
             object-fit: cover;
         }
 
+        .robosub-media {
+            display: grid;
+            gap: 1px;
+            background: var(--line);
+        }
+
+        .robosub-gallery {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 1px;
+            background: var(--line);
+        }
+
+        .robosub-gallery img {
+            min-height: 7.25rem;
+            cursor: zoom-in;
+        }
+
+        .robosub-gallery img:first-child {
+            grid-row: span 3;
+            height: 100%;
+        }
+
         .video-gallery {
             display: grid;
             background: #101820;
@@ -651,6 +674,15 @@
                 width: min(100% - 24px, 1180px);
             }
 
+            .robosub-gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .robosub-gallery img:first-child {
+                grid-column: span 2;
+                grid-row: auto;
+            }
+
             .hero-content {
                 padding: 5rem 0 3rem;
             }
@@ -837,7 +869,10 @@
                             </div>
                         </div>
                         <div class="project-body">
-                            <h3>BLUE - Realistic Space Physics Game</h3>
+                            <div class="project-title-row">
+                                <h3>BLUE - Realistic Space Physics Game</h3>
+                                <a class="project-link" href="https://store.steampowered.com/app/4681380/BLUE/" target="_blank" rel="noopener">Steam</a>
+                            </div>
                             <p>Unreal Engine spaceship game with constraint-based physics, breakable ship components, and damage states that affect combat performance.</p>
                             <ul class="tags"><li>Unreal Engine</li><li>Physics</li><li>Space Combat</li></ul>
                         </div>
@@ -996,6 +1031,26 @@
                     <p>Control systems and simulation projects that connect real-time 3D environments with robotics concepts.</p>
                 </div>
                 <div class="project-grid">
+                    <article class="project-card">
+                        <div class="project-media robosub-media">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/UGtr-hyllbA?si=e0GoDAi7E_M2XA2Z" title="USC AUV RoboSub video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <div class="robosub-gallery" aria-label="USC AUV vehicle gallery">
+                                <img loading="lazy" src="https://uscfrl.com/barracuda.jpg" alt="USC AUV Barracuda autonomous underwater vehicle">
+                                <img loading="lazy" src="https://uscfrl.com/history/mantaray.jpg" alt="USC AUV Mantaray vehicle">
+                                <img loading="lazy" src="https://uscfrl.com/history/turtle.jpg" alt="USC AUV Turtle vehicle">
+                                <img loading="lazy" src="https://uscfrl.com/history/seabee.jpg" alt="USC AUV Seabee vehicle">
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-title-row">
+                                <h3>USC AUV RoboSub Team</h3>
+                                <a class="project-link" href="https://uscfrl.com/" target="_blank" rel="noopener">USC AUV</a>
+                            </div>
+                            <p>Student-led robotics team designing, building, and deploying autonomous underwater vehicles for <a href="https://robosub.org/" target="_blank" rel="noopener">RoboSub</a>, an international competition where AUVs complete underwater mission tasks. RoboSub 2026 is scheduled for July 11-16, 2026 at Woollett Aquatics Center in Irvine, California.</p>
+                            <ul class="tags"><li>AUV</li><li>RoboSub</li><li>ROS</li><li>Underwater Robotics</li></ul>
+                        </div>
+                    </article>
+
                     <article class="project-card">
                         <div class="project-media">
                             <iframe loading="lazy" src="https://www.youtube.com/embed/bJMv3oY-dB8?si=0avdyuY6dOirK7Y-" title="Ball Balancing Robot" allowfullscreen></iframe>
