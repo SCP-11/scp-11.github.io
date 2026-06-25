@@ -322,6 +322,7 @@
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.2rem;
+            align-items: start;
         }
 
         .project-card {
@@ -816,28 +817,26 @@
                 </div>
                 <div class="project-grid">
                     <article class="project-card">
-                        <div class="project-media video-gallery" data-video-gallery>
-                            <div class="video-main">
-                                <iframe loading="lazy" src="https://www.youtube.com/embed/7JefnI0f5Ns?si=ewfXl_eT29PONkaq" title="Game Engine Demo" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <div class="project-media video-main">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/7JefnI0f5Ns?si=ewfXl_eT29PONkaq" title="Game Engine Demo" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-strip-wrap">
+                            <button class="strip-control prev" type="button" aria-label="Scroll game engine videos left">&lsaquo;</button>
+                            <div class="video-strip" aria-label="Game engine supporting videos">
+                                <button class="video-thumb active" type="button" data-video-src="https://www.youtube.com/embed/7JefnI0f5Ns?si=ewfXl_eT29PONkaq" data-video-title="Game Engine Demo" aria-label="Open game engine demo">
+                                    <img loading="lazy" src="https://img.youtube.com/vi/7JefnI0f5Ns/hqdefault.jpg" alt="">
+                                    <span>Main Demo</span>
+                                </button>
+                                <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/eqmH8OjjMIc?si=Sd6c5eA_abzC_N53" data-video-title="Game engine collision demo" aria-label="Open game engine collision demo">
+                                    <img loading="lazy" src="https://img.youtube.com/vi/eqmH8OjjMIc/hqdefault.jpg" alt="">
+                                    <span>Collision Demo</span>
+                                </button>
+                                <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/ffdVcCWtm7w?si=AspEFy31wby489BW" data-video-title="Game engine rendering demo" aria-label="Open game engine rendering demo">
+                                    <img loading="lazy" src="https://img.youtube.com/vi/ffdVcCWtm7w/hqdefault.jpg" alt="">
+                                    <span>Rendering Demo</span>
+                                </button>
                             </div>
-                            <div class="video-strip-wrap">
-                                <button class="strip-control prev" type="button" aria-label="Scroll game engine videos left">&lsaquo;</button>
-                                <div class="video-strip" aria-label="Game engine supporting videos">
-                                    <button class="video-thumb active" type="button" data-video-src="https://www.youtube.com/embed/7JefnI0f5Ns?si=ewfXl_eT29PONkaq" data-video-title="Game Engine Demo" aria-label="Open game engine demo">
-                                        <img loading="lazy" src="https://img.youtube.com/vi/7JefnI0f5Ns/hqdefault.jpg" alt="">
-                                        <span>Main Demo</span>
-                                    </button>
-                                    <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/eqmH8OjjMIc?si=Sd6c5eA_abzC_N53" data-video-title="Game engine collision demo" aria-label="Open game engine collision demo">
-                                        <img loading="lazy" src="https://img.youtube.com/vi/eqmH8OjjMIc/hqdefault.jpg" alt="">
-                                        <span>Collision Demo</span>
-                                    </button>
-                                    <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/ffdVcCWtm7w?si=AspEFy31wby489BW" data-video-title="Game engine rendering demo" aria-label="Open game engine rendering demo">
-                                        <img loading="lazy" src="https://img.youtube.com/vi/ffdVcCWtm7w/hqdefault.jpg" alt="">
-                                        <span>Rendering Demo</span>
-                                    </button>
-                                </div>
-                                <button class="strip-control next" type="button" aria-label="Scroll game engine videos right">&rsaquo;</button>
-                            </div>
+                            <button class="strip-control next" type="button" aria-label="Scroll game engine videos right">&rsaquo;</button>
                         </div>
                         <div class="project-body">
                             <div class="project-title-row">
@@ -849,24 +848,22 @@
                     </article>
 
                     <article class="project-card">
-                        <div class="project-media video-gallery" data-video-gallery>
-                            <div class="video-main">
-                                <iframe loading="lazy" src="https://www.youtube.com/embed/5IDhlikc4F4?si=hNKNX0MHRV1ZEtAv" title="BLUE official trailer" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <div class="project-media video-main">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/5IDhlikc4F4?si=hNKNX0MHRV1ZEtAv" title="BLUE official trailer" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-strip-wrap">
+                            <button class="strip-control prev" type="button" aria-label="Scroll BLUE videos left">&lsaquo;</button>
+                            <div class="video-strip" aria-label="BLUE video playlist">
+                                <button class="video-thumb active" type="button" data-video-src="https://www.youtube.com/embed/5IDhlikc4F4?si=hNKNX0MHRV1ZEtAv" data-video-title="BLUE official trailer" aria-label="Play BLUE official trailer">
+                                    <img loading="lazy" src="https://img.youtube.com/vi/5IDhlikc4F4/hqdefault.jpg" alt="">
+                                    <span>Official Trailer</span>
+                                </button>
+                                <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/W_bey56tRB0?si=g5DjGgfdDw1qnrt1" data-video-title="BLUE gameplay demo" aria-label="Play BLUE gameplay demo">
+                                    <img loading="lazy" src="https://img.youtube.com/vi/W_bey56tRB0/hqdefault.jpg" alt="">
+                                    <span>Gameplay Demo</span>
+                                </button>
                             </div>
-                            <div class="video-strip-wrap">
-                                <button class="strip-control prev" type="button" aria-label="Scroll BLUE videos left">&lsaquo;</button>
-                                <div class="video-strip" aria-label="BLUE video playlist">
-                                    <button class="video-thumb active" type="button" data-video-src="https://www.youtube.com/embed/5IDhlikc4F4?si=hNKNX0MHRV1ZEtAv" data-video-title="BLUE official trailer" aria-label="Play BLUE official trailer">
-                                        <img loading="lazy" src="https://img.youtube.com/vi/5IDhlikc4F4/hqdefault.jpg" alt="">
-                                        <span>Official Trailer</span>
-                                    </button>
-                                    <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/W_bey56tRB0?si=g5DjGgfdDw1qnrt1" data-video-title="BLUE gameplay demo" aria-label="Play BLUE gameplay demo">
-                                        <img loading="lazy" src="https://img.youtube.com/vi/W_bey56tRB0/hqdefault.jpg" alt="">
-                                        <span>Gameplay Demo</span>
-                                    </button>
-                                </div>
-                                <button class="strip-control next" type="button" aria-label="Scroll BLUE videos right">&rsaquo;</button>
-                            </div>
+                            <button class="strip-control next" type="button" aria-label="Scroll BLUE videos right">&rsaquo;</button>
                         </div>
                         <div class="project-body">
                             <div class="project-title-row">
@@ -912,10 +909,6 @@
                         <div class="video-strip-wrap">
                             <button class="strip-control prev" type="button" aria-label="Scroll Library of Meialia images left">&lsaquo;</button>
                             <div class="video-strip support-strip" aria-label="Library of Meialia supporting images">
-                                <button class="video-thumb active" type="button" data-video-src="https://www.youtube.com/embed/hpdU34ydxck?si=heik70aouC_LpGVD" data-video-title="Library of Meialia Demo" aria-label="Play Library of Meialia demo">
-                                    <img loading="lazy" src="https://img.youtube.com/vi/hpdU34ydxck/hqdefault.jpg" alt="">
-                                    <span>Main Demo</span>
-                                </button>
                                 <img loading="lazy" src="images/LOM/LOM.png" alt="Library of Meialia gameplay screenshot">
                                 <img loading="lazy" src="images/LOM/Amlos.png" alt="Amlos character design">
                                 <img loading="lazy" src="images/gallery/portfolio/LOM.png" alt="Library of Meialia promotional image">
@@ -1032,14 +1025,22 @@
                 </div>
                 <div class="project-grid">
                     <article class="project-card">
-                        <div class="project-media robosub-media">
-                            <iframe loading="lazy" src="https://www.youtube.com/embed/UGtr-hyllbA?si=e0GoDAi7E_M2XA2Z" title="USC AUV RoboSub video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <div class="robosub-gallery" aria-label="USC AUV vehicle gallery">
-                                <img loading="lazy" src="https://uscfrl.com/barracuda.jpg" alt="USC AUV Barracuda autonomous underwater vehicle">
-                                <img loading="lazy" src="https://uscfrl.com/history/mantaray.jpg" alt="USC AUV Mantaray vehicle">
-                                <img loading="lazy" src="https://uscfrl.com/history/turtle.jpg" alt="USC AUV Turtle vehicle">
-                                <img loading="lazy" src="https://uscfrl.com/history/seabee.jpg" alt="USC AUV Seabee vehicle">
+                        <div class="project-media video-main">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/UGtr-hyllbA?si=e0GoDAi7E_M2XA2Z" title="USC AUV RoboSub overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-strip-wrap">
+                            <button class="strip-control prev" type="button" aria-label="Scroll RoboSub videos left">&lsaquo;</button>
+                            <div class="video-strip" aria-label="USC AUV RoboSub supporting videos">
+                                <button class="video-thumb active" type="button" data-video-src="https://www.youtube.com/embed/UGtr-hyllbA?si=e0GoDAi7E_M2XA2Z" data-video-title="USC AUV RoboSub overview" aria-label="Play USC AUV RoboSub overview">
+                                    <img loading="lazy" src="https://img.youtube.com/vi/UGtr-hyllbA/hqdefault.jpg" alt="">
+                                    <span>Team Overview</span>
+                                </button>
+                                <button class="video-thumb" type="button" data-video-src="https://www.youtube.com/embed/jDsVjsSvcAk?si=xbhuYwXuf5C0y_aU" data-video-title="USC AUV RoboSub showcase" aria-label="Play USC AUV RoboSub showcase">
+                                    <img loading="lazy" src="https://img.youtube.com/vi/jDsVjsSvcAk/hqdefault.jpg" alt="">
+                                    <span>Competition Showcase</span>
+                                </button>
                             </div>
+                            <button class="strip-control next" type="button" aria-label="Scroll RoboSub videos right">&rsaquo;</button>
                         </div>
                         <div class="project-body">
                             <div class="project-title-row">
@@ -1048,6 +1049,16 @@
                             </div>
                             <p>Student-led robotics team designing, building, and deploying autonomous underwater vehicles for <a href="https://robosub.org/" target="_blank" rel="noopener">RoboSub</a>, an international competition where AUVs complete underwater mission tasks. RoboSub 2026 is scheduled for July 11-16, 2026 at Woollett Aquatics Center in Irvine, California.</p>
                             <ul class="tags"><li>AUV</li><li>RoboSub</li><li>ROS</li><li>Underwater Robotics</li></ul>
+                        </div>
+                        <div class="video-strip-wrap">
+                            <button class="strip-control prev" type="button" aria-label="Scroll RoboSub images left">&lsaquo;</button>
+                            <div class="video-strip support-strip" aria-label="USC AUV RoboSub supporting images">
+                                <img loading="lazy" src="https://uscfrl.com/barracuda.jpg" alt="USC AUV Barracuda autonomous underwater vehicle">
+                                <img loading="lazy" src="https://uscfrl.com/history/mantaray.jpg" alt="USC AUV Mantaray vehicle">
+                                <img loading="lazy" src="https://uscfrl.com/history/turtle.jpg" alt="USC AUV Turtle vehicle">
+                                <img loading="lazy" src="https://uscfrl.com/history/seabee.jpg" alt="USC AUV Seabee vehicle">
+                            </div>
+                            <button class="strip-control next" type="button" aria-label="Scroll RoboSub images right">&rsaquo;</button>
                         </div>
                     </article>
 
@@ -1109,7 +1120,6 @@
                         <div class="video-strip-wrap">
                             <button class="strip-control prev" type="button" aria-label="Scroll 3D Digital Studio images left">&lsaquo;</button>
                             <div class="video-strip support-strip" aria-label="3D Digital Studio supporting images">
-                                <img loading="lazy" src="images/art429/mugBottleLeaf_Takatoshi.jpg" alt="Rendered mug, bottle, and leaf scene">
                                 <img loading="lazy" src="images/art429/Shovel2_Takatoshi.jpg" alt="Rendered shovel model">
                                 <img loading="lazy" src="images/art429/mech.jpg" alt="Mechanical robot model">
                             </div>
@@ -1131,7 +1141,6 @@
                         <div class="video-strip-wrap">
                             <button class="strip-control prev" type="button" aria-label="Scroll Geometric Modeling images left">&lsaquo;</button>
                             <div class="video-strip support-strip" aria-label="Geometric Modeling supporting images">
-                                <img loading="lazy" src="images/me231/Tank_page-Final.jpg" alt="Tank design presentation">
                                 <img loading="lazy" src="images/me231/ps5.jpg" alt="PS5 controller model">
                                 <img loading="lazy" src="images/me231/ps5Many.jpg" alt="PS5 controller model variations">
                             </div>
@@ -1153,7 +1162,6 @@
                         <div class="video-strip-wrap">
                             <button class="strip-control prev" type="button" aria-label="Scroll Digital Forms images left">&lsaquo;</button>
                             <div class="video-strip support-strip" aria-label="Digital Forms supporting images">
-                                <img loading="lazy" src="images/gallery/portfolio/SoedaTakatoshi_RealityUnreality.jpg" alt="Reality Unreality digital composition">
                                 <img loading="lazy" src="images/gallery/portfolio/SoedaTakatoshi_Collage_1.jpg" alt="Digital collage composition">
                                 <img loading="lazy" src="images/gallery/portfolio/1UGLq5.png" alt="Digital form study">
                             </div>
