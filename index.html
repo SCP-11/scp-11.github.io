@@ -624,6 +624,107 @@
             cursor: pointer;
         }
 
+        .experience-wrap {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .exp-subhead {
+            margin: 0 0 1.1rem;
+            font-size: 1.4rem;
+        }
+
+        .exp-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .exp-card {
+            padding: 1.2rem 1.4rem;
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--teal);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: 0 4px 20px rgba(23, 32, 38, 0.05);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .exp-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .exp-card h4 {
+            margin: 0;
+            font-size: 1.12rem;
+        }
+
+        .exp-org {
+            color: var(--teal-dark);
+            font-weight: 800;
+        }
+
+        .exp-date {
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .exp-stack {
+            margin: 0.4rem 0 0.75rem;
+            color: var(--muted);
+            font-size: 0.86rem;
+            font-weight: 600;
+        }
+
+        .exp-points {
+            margin: 0;
+            padding-left: 1.1rem;
+            display: grid;
+            gap: 0.4rem;
+            color: var(--muted);
+        }
+
+        .exp-points li {
+            line-height: 1.5;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-group {
+            padding: 1.1rem 1.25rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--surface);
+        }
+
+        .skill-group h4 {
+            margin: 0 0 0.7rem;
+            color: var(--teal);
+            font-size: 0.82rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .skill-group .tags li {
+            background: #eef2f6;
+            color: var(--ink);
+        }
+
         .footer {
             border-top: 1px solid var(--line);
             padding: 2rem 0;
@@ -651,7 +752,8 @@
 
             .stats,
             .intro,
-            .project-grid {
+            .project-grid,
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -788,6 +890,7 @@
                 <li><button class="nav-tab" id="tab-ai" type="button" role="tab" aria-selected="false" aria-controls="ai" data-tab="ai">AI</button></li>
                 <li><button class="nav-tab" id="tab-robotics" type="button" role="tab" aria-selected="false" aria-controls="robotics" data-tab="robotics">Robotics</button></li>
                 <li><button class="nav-tab" id="tab-art" type="button" role="tab" aria-selected="false" aria-controls="art" data-tab="art">3D / Art</button></li>
+                <li><button class="nav-tab" id="tab-experience" type="button" role="tab" aria-selected="false" aria-controls="experience" data-tab="experience">Experience</button></li>
             </ul>
         </div>
     </nav>
@@ -842,8 +945,8 @@
                             <div class="project-title-row">
                                 <h3>Game Engine Development</h3>
                             </div>
-                            <p>Custom engine work focused on camera culling, physics components, collision handling, and optimized rendering for responsive interactive scenes.</p>
-                            <ul class="tags"><li>C++</li><li>Rendering</li><li>Physics</li><li>Tools</li></ul>
+                            <p>Debugged a custom C++ engine and built multithreaded physics with box/sphere colliders, inertia, and friction. Implemented deferred rendering with shadow, diffuse, normal, and depth maps to strengthen the render pipeline. (USC CSCI 522)</p>
+                            <ul class="tags"><li>C++</li><li>Lua</li><li>OpenGL</li><li>Deferred Rendering</li><li>Multithreading</li></ul>
                         </div>
                     </article>
 
@@ -870,8 +973,8 @@
                                 <h3>BLUE - Realistic Space Physics Game</h3>
                                 <a class="project-link" href="https://store.steampowered.com/app/4681380/BLUE/" target="_blank" rel="noopener">Steam</a>
                             </div>
-                            <p>Unreal Engine spaceship game with constraint-based physics, breakable ship components, and damage states that affect combat performance.</p>
-                            <ul class="tags"><li>Unreal Engine</li><li>Physics</li><li>Space Combat</li></ul>
+                            <p>Realistic spaceship movement system with modular thruster allocation and constraint-driven physics in Unreal Engine. Built gimbal weapon and CIWS-style targeting with debug visualization for aiming, torque, propulsion forces, and runtime physics behavior.</p>
+                            <ul class="tags"><li>Unreal Engine</li><li>C++</li><li>Physics</li><li>Debug Tools</li><li>Space Combat</li></ul>
                         </div>
                     </article>
 
@@ -971,9 +1074,9 @@
                             <iframe loading="lazy" src="https://www.youtube.com/embed/ByitSvdkMvc?si=JOs2f83ymgZvrdNT" title="Research Game AI" allowfullscreen></iframe>
                         </div>
                         <div class="project-body">
-                            <h3>Research Game AI</h3>
-                            <p>Adaptive NPC behavior work designed to make virtual characters feel more responsive, strategic, and engaging during play.</p>
-                            <ul class="tags"><li>NPCs</li><li>Behavior</li><li>Gameplay AI</li></ul>
+                            <h3>Game AI Directed Research</h3>
+                            <p>USC directed research (Scott Easley) using Proximal Policy Optimization to train AI for a tower-defense mobile game, then comparing AI performance against human player data to refine balance and behavior.</p>
+                            <ul class="tags"><li>PPO</li><li>Unity</li><li>C#</li><li>Reinforcement Learning</li></ul>
                         </div>
                     </article>
 
@@ -1051,8 +1154,8 @@
                                 <h3>USC AUV RoboSub Team</h3>
                                 <a class="project-link" href="https://uscfrl.com/" target="_blank" rel="noopener">USC AUV</a>
                             </div>
-                            <p>Student-led robotics team designing, building, and deploying autonomous underwater vehicles for <a href="https://robosub.org/" target="_blank" rel="noopener">RoboSub</a>, an international competition where AUVs complete underwater mission tasks. RoboSub 2026 is scheduled for July 11-16, 2026 at Woollett Aquatics Center in Irvine, California.</p>
-                            <ul class="tags"><li>AUV</li><li>RoboSub</li><li>ROS</li><li>Underwater Robotics</li></ul>
+                            <p>Student-led robotics team designing, building, and deploying autonomous underwater vehicles for <a href="https://robosub.org/" target="_blank" rel="noopener">RoboSub</a>, an international competition where AUVs complete underwater mission tasks. I lead autonomy software across perception, control, and mapping, building EKF sensor-fusion pipelines (DVL, IMU, stereo camera, 360&deg; sonar) for robust localization, and validating navigation in Gazebo and Unreal Engine. RoboSub 2026 runs July 11-16, 2026 at Woollett Aquatics Center in Irvine, California.</p>
+                            <ul class="tags"><li>AUV</li><li>RoboSub</li><li>ROS</li><li>EKF Sensor Fusion</li><li>Gazebo</li><li>Autonomy</li></ul>
                         </div>
                         <div class="video-strip-wrap">
                             <button class="strip-control prev" type="button" aria-label="Scroll RoboSub images left">&lsaquo;</button>
@@ -1172,6 +1275,114 @@
                             <button class="strip-control next" type="button" aria-label="Scroll Digital Forms images right">&rsaquo;</button>
                         </div>
                     </article>
+                </div>
+            </section>
+
+            <section id="experience" class="tab-content" role="tabpanel" aria-labelledby="tab-experience">
+                <div class="tab-heading">
+                    <div>
+                        <p class="section-kicker">Experience</p>
+                        <h2>Experience &amp; Skills</h2>
+                    </div>
+                    <p>Internships and research spanning robotics, computer vision, real-time systems, and game AI, plus the core technical toolkit behind the projects above.</p>
+                </div>
+
+                <div class="experience-wrap">
+                    <div class="exp-group">
+                        <h3 class="exp-subhead">Professional Experience</h3>
+                        <div class="exp-list">
+                            <article class="exp-card">
+                                <div class="exp-top">
+                                    <h4>Software Engineer Intern &middot; <span class="exp-org">Sony Interactive Entertainment</span></h4>
+                                    <span class="exp-date">May 2023 - Aug 2023</span>
+                                </div>
+                                <p class="exp-stack">Madison, WI &middot; JavaScript, TypeScript, Node.js</p>
+                                <ul class="exp-points">
+                                    <li>Improved developer experience for feature development and backend telemetry library workflows in TypeScript and Node.js.</li>
+                                    <li>Reduced memory usage by 50% and package file size by 70% through performance optimization, dependency cleanup, and library-code refactoring.</li>
+                                    <li>Debugged a large-scale telemetry API to improve data-traffic control, bottleneck visibility, and efficient data-flow management.</li>
+                                </ul>
+                            </article>
+
+                            <article class="exp-card">
+                                <div class="exp-top">
+                                    <h4>Computer Vision Intern &middot; <span class="exp-org">Yondu Inc.</span></h4>
+                                    <span class="exp-date">Sep 2024 - Present</span>
+                                </div>
+                                <p class="exp-stack">Gardena, CA &middot; C++, ROS2, OpenCV, RealSense, Jetson, Unity</p>
+                                <ul class="exp-points">
+                                    <li>Built barcode detection, perception, and position-estimation pipelines using stereo / RGB-D cameras, OpenCV, C++, and ROS2.</li>
+                                    <li>Optimized a RealSense VR teleoperation pipeline on Jetson with multithreaded capture and real-time RGB-D streaming to Unity.</li>
+                                    <li>Reduced frame drops and improved streaming stability for low-latency robot teleoperation and sensor-pipeline debugging.</li>
+                                </ul>
+                            </article>
+
+                            <article class="exp-card">
+                                <div class="exp-top">
+                                    <h4>Robotics Software Engineer Intern &middot; <span class="exp-org">HMS</span></h4>
+                                    <span class="exp-date">Jun 2024 - Aug 2024</span>
+                                </div>
+                                <p class="exp-stack">Fukuoka, Japan &middot; C++, ROS</p>
+                                <ul class="exp-points">
+                                    <li>Restructured 3D LiDAR-based real-time localization and mapping based on the Fast-LIO algorithm.</li>
+                                    <li>Improved point-cloud scanning, localization, and map-update systems, automating the process to increase development efficiency.</li>
+                                    <li>Developed an intuitive GUI in three days using Tkinter, streamlining interactions for users and developers.</li>
+                                </ul>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="exp-group">
+                        <h3 class="exp-subhead">Research</h3>
+                        <div class="exp-list">
+                            <article class="exp-card">
+                                <div class="exp-top">
+                                    <h4>Gaussian Splatting Research &middot; <span class="exp-org">USC (Kiran Lekkala)</span></h4>
+                                    <span class="exp-date">May 2025 - Present</span>
+                                </div>
+                                <p class="exp-stack">Los Angeles, CA &middot; 3DGS, ROS, Python</p>
+                                <ul class="exp-points">
+                                    <li>Fixed multi-camera timestamp offsets using LoFTR, dynamic time warping, and gradient-descent optimization.</li>
+                                    <li>Investigated robotic localization and sensor alignment to enable reinforcement-learning training in real environments using Gaussian Splatting.</li>
+                                    <li>Developed ROS-based Spacetime Gaussian Splatting with dynamic rosbag input for real-time scene reconstruction.</li>
+                                </ul>
+                            </article>
+
+                            <article class="exp-card">
+                                <div class="exp-top">
+                                    <h4>Game AI Directed Research &middot; <span class="exp-org">USC (Scott Easley)</span></h4>
+                                    <span class="exp-date">Sep 2024 - Present</span>
+                                </div>
+                                <p class="exp-stack">Los Angeles, CA &middot; Unity, C#, PPO</p>
+                                <ul class="exp-points">
+                                    <li>Implemented Proximal Policy Optimization to train AI for a tower-defense mobile game, optimizing decision-making.</li>
+                                    <li>Analyzed and compared AI performance with human player data to refine game balance and AI behavior.</li>
+                                </ul>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="exp-group">
+                        <h3 class="exp-subhead">Technical Skills</h3>
+                        <div class="skills-grid">
+                            <div class="skill-group">
+                                <h4>Languages</h4>
+                                <ul class="tags"><li>C / C++</li><li>C#</li><li>Python</li><li>JavaScript</li><li>TypeScript</li><li>Node.js</li><li>Java</li><li>SQL</li></ul>
+                            </div>
+                            <div class="skill-group">
+                                <h4>Performance / Systems</h4>
+                                <ul class="tags"><li>SDK Development</li><li>CPU / GPU Profiling</li><li>Memory Optimization</li><li>Multithreading</li><li>Real-time Debugging</li></ul>
+                            </div>
+                            <div class="skill-group">
+                                <h4>Graphics / Media</h4>
+                                <ul class="tags"><li>OpenGL</li><li>Deferred Rendering</li><li>Shaders</li><li>Unreal Engine</li><li>Unity</li><li>OpenCV</li><li>RealSense</li><li>RGB-D / Video Streaming</li></ul>
+                            </div>
+                            <div class="skill-group">
+                                <h4>Robotics / Tools</h4>
+                                <ul class="tags"><li>ROS2</li><li>Jetson</li><li>Git</li><li>Docker</li><li>Linux</li><li>RenderDoc</li><li>PyTorch</li><li>TensorFlow</li></ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
