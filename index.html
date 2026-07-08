@@ -359,6 +359,36 @@
             object-fit: cover;
         }
 
+        .vulkan-placeholder {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            color: #eaf2ff;
+            text-align: center;
+            background:
+                radial-gradient(circle at 30% 35%, rgba(90,160,255,0.55), transparent 42%),
+                radial-gradient(circle at 68% 62%, rgba(180,120,255,0.5), transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(60,220,220,0.35), transparent 55%),
+                #05070f;
+        }
+
+        .vulkan-placeholder span {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .vulkan-placeholder small {
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            color: rgba(234,242,255,0.75);
+        }
+
         .robosub-media {
             display: grid;
             gap: 1px;
@@ -947,6 +977,26 @@
                             </div>
                             <p>Debugged a custom C++ engine and built multithreaded physics with box/sphere colliders, inertia, and friction. Implemented deferred rendering with shadow, diffuse, normal, and depth maps to strengthen the render pipeline. (USC CSCI 522)</p>
                             <ul class="tags"><li>C++</li><li>Lua</li><li>OpenGL</li><li>Deferred Rendering</li><li>Multithreading</li></ul>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <!-- Swap this placeholder for a screenshot/GIF: save a capture to
+                                 images/vulkan/particles.png and replace the div below with
+                                 <img loading="lazy" src="images/vulkan/particles.png" alt="Vulkan particle system"> -->
+                            <div class="vulkan-placeholder" role="img" aria-label="Vulkan compute-shader particle system preview">
+                                <span>Vulkan</span>
+                                <small>compute-shader particle system</small>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-title-row">
+                                <h3>Vulkan Particle System</h3>
+                                <a class="project-link" href="https://github.com/SCP-11/vulkan-particles" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                            <p>GPU-driven 2D particle field built from scratch in Vulkan (C++17). A compute shader integrates 8,192 particles per frame into a double-buffered shader storage buffer that is bound directly as the render vertex buffer &mdash; no CPU round-trip. Full explicit setup: instance and validation layers, device and queue selection, swapchain recreation, separate graphics and compute pipelines, semaphore-based compute&rarr;graphics sync, and additive point-sprite blending.</p>
+                            <ul class="tags"><li>Vulkan</li><li>C++</li><li>Compute Shaders</li><li>GLSL</li><li>GPU Simulation</li><li>Rendering</li></ul>
                         </div>
                     </article>
 
